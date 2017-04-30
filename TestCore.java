@@ -18,7 +18,19 @@ public class TestCore {
                 {0, 0, 8, 5, 0, 0, 0, 1, 0},  
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}};
 		
-		sudoku.backTrackingSearch(matrice, 0, 0);
+		int[][] solution = sudoku.chercherSolution(matrice);
+		
+		for (int i = 0; i < 9; i++) {
+        	
+            for (int j = 0; j < 9; j++) {
+            	
+                System.out.print(solution[i][j] + " ");
+            }
+            
+            System.out.println();
+        }
+        
+        System.out.println();
 		
 	}
 

@@ -2,10 +2,33 @@ package Sudoku;
 
 public class SudokuCore implements ISudokuCore{
 	
-	public void backTrackingSearch(int[][] matrice, int ligne, int colonne){
+	private boolean continuer = true;
+	
+	public int[][] chercherSolution(int[][] matrice){
+		
+		int[][] resultat = new int[9][9];
+		
+		for (int i = 0; i < 9; i++) {
+        	
+            for (int j = 0; j < 9; j++) {
+            	
+            	resultat[i][j] = matrice[i][j];
+            }
+            
+        }
+		
+		continuer = true;
+		
+		backTrackingSearch(resultat, 0, 0);
+		
+		return resultat;
+	}
+	
+	private void backTrackingSearch(int[][] matrice, int ligne, int colonne){
 		
 		if (ligne == 8 && colonne == 9) {
-			afficherMatrice(matrice);
+			//afficherMatrice(matrice);
+			continuer = false;
             return ;
         }
   
@@ -29,7 +52,10 @@ public class SudokuCore implements ISudokuCore{
                 	backTrackingSearch(matrice, ligne, colonne + 1);
                     
                 	//Initialiser la case
-                    matrice[ligne][colonne] = 0;
+                	if(continuer){
+                		matrice[ligne][colonne] = 0;
+                	}
+                    
                 }
             }
         } else {
