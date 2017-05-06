@@ -27,12 +27,12 @@ public class SudokuCore implements ISudokuCore{
 	private void backTrackingSearch(int[][] matrice, int ligne, int colonne){
 		
 		if (ligne == 8 && colonne == 9) {
-			//afficherMatrice(matrice);
+			
 			continuer = false;
+			
             return ;
         }
   
-        //Verrifier si c'est une nouvelle ligne
         if (colonne == 9) {
         	
         	ligne++;
@@ -64,9 +64,8 @@ public class SudokuCore implements ISudokuCore{
         }
 	}
 	
-	public boolean verifierMatrice(int[][] matrice, int ligne, int colonne, int chiffre){
+	private boolean verifierMatrice(int[][] matrice, int ligne, int colonne, int chiffre){
 		
-		//Vedifier la ligne et la colonne
         for (int i = 0; i < 9; i++) {
         	
             if (matrice[ligne][i] == chiffre || matrice[i][colonne] == chiffre) {
@@ -75,15 +74,15 @@ public class SudokuCore implements ISudokuCore{
             }
         }
         //Verifier la sub matrice
-        int ligneSubMatrice = ligne / 3;
+        int iSubMatrice = ligne / 3;
         
-        int colonneSubMatrice = colonne / 3;
+        int jSubMatrice = colonne / 3;
         
         for (int i = 0; i < 3; i++) {
         	
             for (int j = 0; j < 3; j++) {
             	
-                if (matrice[ligneSubMatrice * 3 + i][colonneSubMatrice * 3 + j] == chiffre) {
+                if (matrice[iSubMatrice * 3 + i][jSubMatrice * 3 + j] == chiffre) {
                 	
                     return false;
                 }
