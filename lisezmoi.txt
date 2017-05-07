@@ -1,0 +1,7 @@
+Auteurs : Ren Shen (RENS18018306)
+	  Alexandre Fernandes-Bartolomeu (FERA19029301)
+
+Exécution : Choisir TP3.java pour l'exécution du jeu au complet
+	    Choisir TestCore.java pour voir l'exécution d'un cas de Sudoku à la console
+
+Références : Aucunes
