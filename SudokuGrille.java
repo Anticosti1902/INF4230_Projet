@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 public class SudokuGrille extends JPanel implements MouseListener {
 	
 	private int[][] _plan;
-	
 	private ISudokuCore _sudokuCore;
 	
 	private SudokuCase[][] _sudokuCases;
@@ -99,7 +97,7 @@ public class SudokuGrille extends JPanel implements MouseListener {
     	
     	deactiveSudokuCases();
     	
-    	MessagePopup message = new MessagePopup("Bravo! Vous avez compl¨¦t¨¦ ce niveau !");
+    	MessagePopup message = new MessagePopup("Bravo! Vous avez complï¿½ï¿½tï¿½ï¿½ ce niveau !");
     	
     	message.setModal(true);
         
@@ -219,6 +217,22 @@ public class SudokuGrille extends JPanel implements MouseListener {
         
         return true;
     }
-    
-    
+
+    public void montrerErreurs() {
+
+        if (_plan != null) {
+            int[][] resultat = _sudokuCore.chercherSolution(_plan);
+            if (resultat != null) {
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        if (!String.valueOf(resultat[i][j]).equals(_sudokuCases[i][j].getText()) && !_sudokuCases[i][j].getText().equals(" ")) {
+                            _sudokuCases[i][j].setForeground(Color.red);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
 }

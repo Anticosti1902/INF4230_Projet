@@ -37,6 +37,24 @@ public class SudokuMainWindow extends JFrame {
         
         JPanel commandePanel = new JPanel();
         
+        JButton estCoupValide = new JButton();
+
+        estCoupValide.setSize(300, 100);
+        
+        estCoupValide.setBounds(160, 485, 175, 40);
+
+        estCoupValide.setText("Afficher mauvais coups");
+
+        estCoupValide.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                afficherMauvaisCoups();
+            }
+        });
+        
+        _sudokuGrille.add(estCoupValide);
+        
         
         JButton selectNiveauxBtn = new JButton();
         
@@ -81,17 +99,20 @@ public class SudokuMainWindow extends JFrame {
             	afficherSolution();
             }
         });
-        
-        
+
         commandePanel.add(selectNiveauxBtn, BorderLayout.WEST);
         
         commandePanel.add(recommencerBtn, BorderLayout.CENTER);
         
-        commandePanel.add(afficherSolutionBtn, BorderLayout.EAST);
+        commandePanel.add(afficherSolutionBtn, BorderLayout.CENTER);
         
         
         this.add(commandePanel, BorderLayout.NORTH);
 
+    }
+    
+    private void afficherMauvaisCoups(){
+        _sudokuGrille.montrerErreurs();
     }
     
     private void selectNiveaux(){
