@@ -1,4 +1,3 @@
-package Sudoku;
 
 public interface ISudokuCore {
 	
